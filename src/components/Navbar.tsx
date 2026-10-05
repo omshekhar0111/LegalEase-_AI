@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Scale, Shield, HelpCircle, Lock, BookOpen, Key, Sparkles, FileText } from 'lucide-react';
+import { Scale, Shield, HelpCircle, Lock, BookOpen, Key, Sparkles, FileText, ArrowRight } from 'lucide-react';
 
 interface NavbarProps {
   onOpenPrivacy: () => void;
@@ -27,22 +27,24 @@ export const Navbar: React.FC<NavbarProps> = ({
   hasCustomKey,
 }) => {
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200">
+    <header className="sticky top-0 z-40 bg-[#0B1220]/85 backdrop-blur-xl border-b border-white/10 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Brand Logo & Tagline */}
-          <div className="flex items-center gap-3 cursor-pointer" onClick={() => setActiveView('dashboard')}>
-            <div className="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center shadow-sm">
-              <Scale className="w-5 h-5 text-indigo-400" />
+          <div className="flex items-center gap-3 cursor-pointer group" onClick={() => setActiveView('dashboard')}>
+            {/* Custom Abstract Geometric LegalEase AI Logo */}
+            <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-[#172554] to-[#0B1220] border border-[#5B7CFA]/30 flex items-center justify-center shadow-[0_0_15px_rgba(91,124,250,0.25)] group-hover:border-[#5B7CFA]/60 transition-all">
+              <Scale className="w-5 h-5 text-[#5B7CFA]" />
+              <div className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-[#D4A72C] shadow-[0_0_8px_#D4A72C]" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-bold text-lg text-slate-900 tracking-tight">LegalEase AI</span>
-                <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">
-                  India Legal Tech
+                <span className="font-bold text-lg text-white tracking-tight">LegalEase<span className="text-[#5B7CFA]"> AI</span></span>
+                <span className="text-[10px] font-mono font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#172554] text-[#5B7CFA] border border-[#5B7CFA]/30">
+                  2030 Platform
                 </span>
               </div>
-              <p className="text-xs text-slate-500 hidden sm:block">
+              <p className="text-xs text-[#94A3B8] hidden sm:block">
                 Understand your documents · Prepare for your lawyer
               </p>
             </div>
@@ -52,10 +54,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="hidden md:flex items-center space-x-1 lg:space-x-2">
             <button
               onClick={() => setActiveView('dashboard')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                 activeView === 'dashboard'
-                  ? 'bg-slate-100 text-slate-900 font-semibold'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                  ? 'bg-white/10 text-white font-semibold border border-white/15'
+                  : 'text-[#94A3B8] hover:text-white hover:bg-white/5'
               }`}
             >
               Dashboard
@@ -64,92 +66,96 @@ export const Navbar: React.FC<NavbarProps> = ({
             {hasDocument && (
               <button
                 onClick={() => setActiveView('viewer')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors flex items-center gap-1.5 ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all flex items-center gap-1.5 ${
                   activeView === 'viewer'
-                    ? 'bg-indigo-50 text-indigo-900 font-semibold border border-indigo-200'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                    ? 'bg-[#172554] text-[#5B7CFA] font-semibold border border-[#5B7CFA]/40 shadow-[0_0_12px_rgba(91,124,250,0.2)]'
+                    : 'text-[#94A3B8] hover:text-white hover:bg-white/5'
                 }`}
               >
-                <FileText className="w-3.5 h-3.5 text-indigo-600" />
+                <FileText className="w-3.5 h-3.5 text-[#5B7CFA]" />
                 Document Intelligence
               </button>
             )}
 
             <button
               onClick={onOpenLegalAid}
-              className="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 flex items-center gap-1.5"
+              className="px-3 py-1.5 rounded-lg text-xs font-medium text-[#94A3B8] hover:text-white hover:bg-white/5 flex items-center gap-1.5 transition-colors"
             >
-              <BookOpen className="w-3.5 h-3.5 text-slate-500" />
+              <BookOpen className="w-3.5 h-3.5 text-[#94A3B8]" />
               Legal Aid Directory
             </button>
 
             <button
               onClick={onOpenPrivacy}
-              className="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 flex items-center gap-1.5"
+              className="px-3 py-1.5 rounded-lg text-xs font-medium text-[#94A3B8] hover:text-white hover:bg-white/5 flex items-center gap-1.5 transition-colors"
             >
-              <Lock className="w-3.5 h-3.5 text-slate-500" />
+              <Lock className="w-3.5 h-3.5 text-[#94A3B8]" />
               Privacy Center
             </button>
 
             <button
               onClick={onOpenJudgeFaq}
-              className="px-3 py-1.5 rounded-lg text-xs font-medium text-amber-800 bg-amber-50 hover:bg-amber-100 border border-amber-200 flex items-center gap-1.5"
+              className="px-3 py-1.5 rounded-lg text-xs font-semibold text-[#D4A72C] bg-[#D4A72C]/10 hover:bg-[#D4A72C]/20 border border-[#D4A72C]/30 flex items-center gap-1.5 transition-all shadow-[0_0_12px_rgba(212,167,44,0.15)]"
               title="Architecture & Differentiation for Evaluators"
             >
-              <HelpCircle className="w-3.5 h-3.5 text-amber-600" />
-              Judge Guide / Architecture
+              <HelpCircle className="w-3.5 h-3.5 text-[#D4A72C]" />
+              Judge Guide / FAQ
             </button>
           </div>
 
           {/* Quick Actions & Demo CTA */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2.5">
             <button
               onClick={onOpenApiKey}
-              className={`p-2 rounded-lg border text-xs flex items-center gap-1 transition-colors ${
+              className={`p-2 rounded-lg border text-xs flex items-center gap-1 transition-all ${
                 hasCustomKey
-                  ? 'border-emerald-300 bg-emerald-50 text-emerald-800'
-                  : 'border-slate-200 text-slate-600 hover:bg-slate-50'
+                  ? 'border-emerald-500/40 bg-emerald-950/40 text-emerald-400'
+                  : 'border-white/10 bg-white/5 text-[#94A3B8] hover:text-white hover:bg-white/10'
               }`}
               title="Configure Gemini API Key"
             >
               <Key className="w-3.5 h-3.5" />
               <span className="hidden xl:inline text-[11px]">
-                {hasCustomKey ? 'Gemini Key Active' : 'API Settings'}
+                {hasCustomKey ? 'Gemini Active' : 'API Settings'}
               </span>
             </button>
 
             <div className="relative group">
               <button
                 onClick={() => onSelectDemo('employment')}
-                className="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white shadow-sm flex items-center gap-1.5 transition-all"
+                className="px-4 py-2 rounded-xl text-xs font-semibold bg-gradient-to-r from-[#172554] via-[#1E293B] to-[#172554] hover:from-[#1E293B] hover:to-[#172554] text-white border border-[#5B7CFA]/50 shadow-[0_0_20px_rgba(91,124,250,0.3)] hover:shadow-[0_0_25px_rgba(91,124,250,0.5)] flex items-center gap-2 transition-all cursor-pointer"
               >
-                <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
+                <Sparkles className="w-3.5 h-3.5 text-[#D4A72C] animate-pulse" />
                 <span>Try Demo</span>
               </button>
 
-              <div className="absolute right-0 mt-1 w-56 bg-white rounded-xl shadow-lg border border-slate-200 py-1.5 hidden group-hover:block z-50">
-                <div className="px-3 py-1 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
+              <div className="absolute right-0 mt-2 w-64 bg-[#0B1220]/95 backdrop-blur-2xl rounded-2xl shadow-2xl border border-white/15 p-2 hidden group-hover:block z-50">
+                <div className="px-3 py-1.5 text-[10px] font-mono uppercase tracking-wider text-[#94A3B8]">
                   Sample Indian Documents
                 </div>
                 <button
                   onClick={() => onSelectDemo('employment')}
-                  className="w-full text-left px-3 py-2 text-xs text-slate-800 hover:bg-indigo-50 hover:text-indigo-900 flex items-center justify-between"
+                  className="w-full text-left p-2.5 rounded-xl hover:bg-white/5 text-xs text-[#F8F6F1] flex items-center justify-between transition-colors cursor-pointer"
                 >
                   <div>
-                    <div className="font-medium">Employment Notice</div>
-                    <div className="text-[10px] text-slate-500">Non-compete · Forfeiture · 7-day cutoff</div>
+                    <div className="font-semibold text-white">Employment Notice</div>
+                    <div className="text-[10px] text-[#94A3B8]">Non-compete · Forfeiture · 7-day cutoff</div>
                   </div>
-                  <span className="text-[10px] px-1.5 py-0.5 bg-red-100 text-red-700 rounded font-mono">P0 Demo</span>
+                  <span className="text-[9px] font-mono px-2 py-0.5 bg-red-950/80 text-red-300 rounded border border-red-800">
+                    P0 DEMO
+                  </span>
                 </button>
                 <button
                   onClick={() => onSelectDemo('rental')}
-                  className="w-full text-left px-3 py-2 text-xs text-slate-800 hover:bg-indigo-50 hover:text-indigo-900 flex items-center justify-between"
+                  className="w-full text-left p-2.5 rounded-xl hover:bg-white/5 text-xs text-[#F8F6F1] flex items-center justify-between transition-colors cursor-pointer"
                 >
                   <div>
-                    <div className="font-medium">Bangalore Rental Agreement</div>
-                    <div className="text-[10px] text-slate-500">10-month lock-in · Deposit risk</div>
+                    <div className="font-semibold text-white">Bangalore Rental Deed</div>
+                    <div className="text-[10px] text-[#94A3B8]">10-month lock-in · Deposit risk</div>
                   </div>
-                  <span className="text-[10px] px-1.5 py-0.5 bg-blue-100 text-blue-700 rounded font-mono">Tenancy</span>
+                  <span className="text-[9px] font-mono px-2 py-0.5 bg-blue-950/80 text-blue-300 rounded border border-blue-800">
+                    TENANCY
+                  </span>
                 </button>
               </div>
             </div>
@@ -158,11 +164,11 @@ export const Navbar: React.FC<NavbarProps> = ({
       </div>
 
       {/* Trust disclaimer ribbon */}
-      <div className="bg-slate-50 border-t border-slate-200/80 px-4 py-1 text-center">
-        <p className="text-[11px] text-slate-500 flex items-center justify-center gap-1.5">
-          <Shield className="w-3 h-3 text-slate-400" />
+      <div className="bg-[#0B1220]/90 border-t border-white/5 px-4 py-1 text-center">
+        <p className="text-[11px] text-[#94A3B8] flex items-center justify-center gap-1.5">
+          <Shield className="w-3 h-3 text-[#5B7CFA]" />
           <span>
-            <strong>LegalEase AI provides informational document assistance, not formal legal advice.</strong> For important legal decisions, consult a licensed advocate.
+            <strong className="text-[#F8F6F1]">LegalEase AI provides informational document assistance, not formal legal advice.</strong> For important decisions, consult a licensed advocate.
           </span>
         </p>
       </div>

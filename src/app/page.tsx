@@ -150,7 +150,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900">
+    <div className="min-h-screen flex flex-col bg-atmospheric bg-neural-grid text-[#F8F6F1]">
       {/* Navigation Bar */}
       <Navbar
         onOpenPrivacy={() => setIsPrivacyOpen(true)}
@@ -203,23 +203,23 @@ export default function Home() {
             {activeView === 'viewer' && (
               <div className="flex-1 flex flex-col h-[calc(100vh-108px)]">
                 {/* Mobile Pane Switcher (Visible only on small screens) */}
-                <div className="md:hidden bg-slate-100 p-1.5 flex items-center justify-center gap-1 border-b border-slate-200">
+                <div className="md:hidden bg-[#0B1220] p-2 flex items-center justify-center gap-2 border-b border-white/10">
                   <button
                     onClick={() => setMobilePane('document')}
-                    className={`flex-1 py-1.5 text-xs font-semibold rounded-md transition-colors ${
+                    className={`flex-1 py-2 text-xs font-semibold rounded-xl transition-all ${
                       mobilePane === 'document'
-                        ? 'bg-white text-slate-900 shadow-xs'
-                        : 'text-slate-600'
+                        ? 'bg-[#172554] text-white border border-[#5B7CFA]/40 shadow-xs'
+                        : 'text-[#94A3B8] hover:text-white'
                     }`}
                   >
                     Original Document (Page {activePage})
                   </button>
                   <button
                     onClick={() => setMobilePane('analysis')}
-                    className={`flex-1 py-1.5 text-xs font-semibold rounded-md transition-colors ${
+                    className={`flex-1 py-2 text-xs font-semibold rounded-xl transition-all ${
                       mobilePane === 'analysis'
-                        ? 'bg-white text-slate-900 shadow-xs'
-                        : 'text-slate-600'
+                        ? 'bg-[#172554] text-white border border-[#5B7CFA]/40 shadow-xs'
+                        : 'text-[#94A3B8] hover:text-white'
                     }`}
                   >
                     Legal Intelligence & Chat

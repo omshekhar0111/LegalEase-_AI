@@ -1,19 +1,134 @@
 @import "tailwindcss";
 
+@theme inline {
+  --color-midnight: #0B1220;
+  --color-deep-indigo: #172554;
+  --color-warm-ivory: #F8F6F1;
+  --color-soft-sand: #EDE8DC;
+  --color-muted-gold: #D4A72C;
+  --color-ai-blue: #5B7CFA;
+  --color-muted-text: #94A3B8;
+}
+
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
+  --bg-midnight: #0B1220;
+  --bg-deep-indigo: #172554;
+  --ivory-surface: #F8F6F1;
+  --sand-accent: #EDE8DC;
+  --gold-accent: #D4A72C;
+  --ai-blue: #5B7CFA;
+  --text-muted: #94A3B8;
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: #0B1220;
+  color: #F8F6F1;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Plus Jakarta Sans', Inter, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Atmospheric Layered Background */
+.bg-atmospheric {
+  background-color: #0B1220;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(91, 124, 250, 0.18), transparent 75%),
+    radial-gradient(ellipse 60% 40% at 85% 60%, rgba(23, 37, 84, 0.45), transparent 70%),
+    radial-gradient(ellipse 50% 30% at 15% 75%, rgba(212, 167, 44, 0.06), transparent 60%);
+}
+
+.bg-neural-grid {
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+}
+
+/* Glassmorphism Presets */
+.glass-panel-dark {
+  background: rgba(11, 18, 32, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card-dark {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.glass-card-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-card-hover:hover {
+  transform: translateY(-2px);
+  border-color: rgba(91, 124, 250, 0.35);
+  box-shadow: 0 16px 36px -10px rgba(91, 124, 250, 0.15);
+}
+
+/* Warm Ivory Document Canvas */
+.parchment-sheet {
+  background-color: #F8F6F1;
+  color: #0F172A;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.1),
+    0 20px 40px -15px rgba(0, 0, 0, 0.3),
+    0 0 0 1px #EDE8DC;
+}
+
+/* Laser Scan & Pulse Keyframes */
+@keyframes laserSweep {
+  0% {
+    top: 0%;
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    top: 100%;
+    opacity: 0.2;
+  }
+}
+
+.animate-laser {
+  animation: laserSweep 3.2s ease-in-out infinite alternate;
+}
+
+@keyframes pulseSlow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 5s ease-in-out infinite;
+}
+
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.5deg);
+  }
+}
+
+.animate-float {
+  animation: floatGentle 6s ease-in-out infinite;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(4px);
+    transform: translateY(6px);
   }
   to {
     opacity: 1;
@@ -22,23 +137,23 @@ body {
 }
 
 .animate-fadeIn {
-  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Custom subtle scrollbars */
+/* Custom Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: rgba(11, 18, 32, 0.4);
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: rgba(148, 163, 184, 0.25);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: rgba(91, 124, 250, 0.45);
 }
 
 @media print {

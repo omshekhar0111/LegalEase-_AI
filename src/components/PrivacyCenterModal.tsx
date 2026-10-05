@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { X, Lock, ShieldCheck, Trash2, Key, RefreshCw, CheckCircle2, AlertTriangle } from 'lucide-react';
+import { X, Lock, ShieldCheck, Trash2, Key, CheckCircle2 } from 'lucide-react';
 
 interface PrivacyCenterModalProps {
   isOpen: boolean;
@@ -29,23 +29,23 @@ export const PrivacyCenterModal: React.FC<PrivacyCenterModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 animate-fadeIn">
-      <div className="bg-white rounded-2xl max-w-2xl w-full shadow-2xl border border-slate-200">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-fadeIn">
+      <div className="bg-[#0B1220] text-[#F8F6F1] rounded-2xl max-w-2xl w-full shadow-2xl border border-white/15">
         {/* Header */}
-        <div className="px-6 py-4 border-b border-slate-200 flex items-center justify-between bg-slate-50 rounded-t-2xl">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-slate-900 text-white flex items-center justify-center">
-              <Lock className="w-4 h-4 text-emerald-400" />
+        <div className="px-6 py-4 border-b border-white/10 flex items-center justify-between bg-white/[0.02] rounded-t-2xl">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-[#172554] border border-[#5B7CFA]/30 text-[#5B7CFA] flex items-center justify-center shadow-[0_0_12px_rgba(91,124,250,0.25)]">
+              <Lock className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-base font-bold text-slate-900">Privacy & Data Governance Center</h2>
-              <p className="text-xs text-slate-500">Your documents remain private and under your direct control</p>
+              <h2 className="text-base font-bold text-white">Privacy & Data Governance Center</h2>
+              <p className="text-xs text-[#94A3B8]">Your documents remain private and under your direct control</p>
             </div>
           </div>
 
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg hover:bg-slate-200 text-slate-500 transition-colors"
+            className="p-1.5 rounded-lg hover:bg-white/10 text-[#94A3B8] hover:text-white transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -53,111 +53,111 @@ export const PrivacyCenterModal: React.FC<PrivacyCenterModalProps> = ({
 
         {/* Feedback message */}
         {feedbackMsg && (
-          <div className="p-3 bg-emerald-50 border-b border-emerald-200 text-xs text-emerald-800 flex items-center gap-2">
-            <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+          <div className="p-3 bg-emerald-950/60 border-b border-emerald-800/80 text-xs text-emerald-200 flex items-center gap-2">
+            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
             <span>{feedbackMsg}</span>
           </div>
         )}
 
         {/* Body */}
-        <div className="p-6 space-y-6 text-xs text-slate-700">
+        <div className="p-6 space-y-6 text-xs text-[#F8F6F1]">
           {/* 1. Retention Policy Setting */}
-          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
+          <div className="p-5 rounded-2xl glass-card-dark border border-white/10 space-y-3.5">
             <div className="flex items-center justify-between">
-              <h3 className="font-bold text-slate-900 text-sm">Document Retention Policy</h3>
-              <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">
+              <h3 className="font-bold text-white text-sm">Document Retention Policy</h3>
+              <span className="text-[10px] font-mono uppercase px-2.5 py-0.5 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-800">
                 Default: Ephemeral
               </span>
             </div>
-            <p className="text-xs text-slate-600">
+            <p className="text-xs text-[#94A3B8]">
               Select how long analyzed legal text and clause metadata should be held in active memory:
             </p>
 
-            <div className="space-y-2">
-              <label className="flex items-start gap-3 p-2.5 rounded-lg border bg-white border-slate-200 hover:border-slate-300 cursor-pointer">
+            <div className="space-y-2.5">
+              <label className="flex items-start gap-3 p-3 rounded-xl border bg-black/30 border-white/10 hover:border-[#5B7CFA]/50 cursor-pointer transition-colors">
                 <input
                   type="radio"
                   name="retention"
                   checked={retentionPolicy === 'ephemeral'}
                   onChange={() => setRetentionPolicy('ephemeral')}
-                  className="mt-0.5 text-indigo-600 focus:ring-indigo-500"
+                  className="mt-0.5 text-[#5B7CFA] focus:ring-[#5B7CFA] bg-black/40 border-white/20"
                 />
                 <div>
-                  <div className="font-semibold text-slate-900">Delete immediately after session analysis (Privacy First)</div>
-                  <div className="text-[11px] text-slate-500">Processed in server runtime memory; discarded when you close or reload the browser.</div>
+                  <div className="font-semibold text-white">Delete immediately after session analysis (Privacy First)</div>
+                  <div className="text-[11px] text-[#94A3B8] mt-0.5">Processed in server runtime memory; discarded when you close or reload the browser.</div>
                 </div>
               </label>
 
-              <label className="flex items-start gap-3 p-2.5 rounded-lg border bg-white border-slate-200 hover:border-slate-300 cursor-pointer">
+              <label className="flex items-start gap-3 p-3 rounded-xl border bg-black/30 border-white/10 hover:border-[#5B7CFA]/50 cursor-pointer transition-colors">
                 <input
                   type="radio"
                   name="retention"
                   checked={retentionPolicy === '7days'}
                   onChange={() => setRetentionPolicy('7days')}
-                  className="mt-0.5 text-indigo-600 focus:ring-indigo-500"
+                  className="mt-0.5 text-[#5B7CFA] focus:ring-[#5B7CFA] bg-black/40 border-white/20"
                 />
                 <div>
-                  <div className="font-semibold text-slate-900">Keep for 7 days</div>
-                  <div className="text-[11px] text-slate-500">Encrypted in local browser storage to let you return to your action plan and questions.</div>
+                  <div className="font-semibold text-white">Keep for 7 days</div>
+                  <div className="text-[11px] text-[#94A3B8] mt-0.5">Encrypted in local browser storage to let you return to your action plan and questions.</div>
                 </div>
               </label>
 
-              <label className="flex items-start gap-3 p-2.5 rounded-lg border bg-white border-slate-200 hover:border-slate-300 cursor-pointer">
+              <label className="flex items-start gap-3 p-3 rounded-xl border bg-black/30 border-white/10 hover:border-[#5B7CFA]/50 cursor-pointer transition-colors">
                 <input
                   type="radio"
                   name="retention"
                   checked={retentionPolicy === 'manual'}
                   onChange={() => setRetentionPolicy('manual')}
-                  className="mt-0.5 text-indigo-600 focus:ring-indigo-500"
+                  className="mt-0.5 text-[#5B7CFA] focus:ring-[#5B7CFA] bg-black/40 border-white/20"
                 />
                 <div>
-                  <div className="font-semibold text-slate-900">Keep until manually deleted</div>
-                  <div className="text-[11px] text-slate-500">Persisted locally until you explicitly click &quot;Purge All Data&quot;.</div>
+                  <div className="font-semibold text-white">Keep until manually deleted</div>
+                  <div className="text-[11px] text-[#94A3B8] mt-0.5">Persisted locally until you explicitly click &quot;Purge All Data&quot;.</div>
                 </div>
               </label>
             </div>
           </div>
 
           {/* 2. Security Safeguards Overview */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div className="p-3 rounded-lg border border-slate-200 bg-white">
-              <div className="flex items-center gap-2 font-bold text-slate-900 mb-1">
-                <ShieldCheck className="w-4 h-4 text-indigo-600" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <div className="p-4 rounded-xl border border-white/10 bg-white/[0.02]">
+              <div className="flex items-center gap-2 font-bold text-white mb-1">
+                <ShieldCheck className="w-4 h-4 text-[#5B7CFA]" />
                 <span>Zero Client-Side Secrets</span>
               </div>
-              <p className="text-[11px] text-slate-600">
+              <p className="text-[11px] text-[#94A3B8] leading-relaxed">
                 All Gemini API keys and sensitive processing happen strictly in server-side API routes. Your browser bundle never includes API credentials.
               </p>
             </div>
 
-            <div className="p-3 rounded-lg border border-slate-200 bg-white">
-              <div className="flex items-center gap-2 font-bold text-slate-900 mb-1">
-                <Key className="w-4 h-4 text-emerald-600" />
+            <div className="p-4 rounded-xl border border-white/10 bg-white/[0.02]">
+              <div className="flex items-center gap-2 font-bold text-white mb-1">
+                <Key className="w-4 h-4 text-[#D4A72C]" />
                 <span>No Model Training</span>
               </div>
-              <p className="text-[11px] text-slate-600">
+              <p className="text-[11px] text-[#94A3B8] leading-relaxed">
                 Documents sent through the official Google Gemini API are processed under enterprise privacy terms and are not used to train foundation models.
               </p>
             </div>
           </div>
 
           {/* 3. Immediate Data Deletion Controls */}
-          <div className="p-4 rounded-xl border border-red-200 bg-red-50/30 space-y-3">
-            <div className="flex items-center gap-2 text-red-900 font-bold">
-              <Trash2 className="w-4 h-4 text-red-600" />
+          <div className="p-5 rounded-2xl border border-red-900/60 bg-red-950/25 space-y-3">
+            <div className="flex items-center gap-2 text-red-300 font-bold">
+              <Trash2 className="w-4 h-4 text-red-400" />
               <span>Immediate Data Purge Controls</span>
             </div>
-            <p className="text-xs text-red-800/80">
+            <p className="text-xs text-red-200/80">
               You have full ownership. You can instantly wipe documents, analysis trees, and cached messages with one click:
             </p>
 
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2.5 pt-1">
               <button
                 onClick={() => {
                   onDeleteDocument();
                   showFeedback('Document content wiped from active view.');
                 }}
-                className="px-3 py-1.5 rounded-lg bg-white border border-red-300 text-red-700 hover:bg-red-50 font-semibold"
+                className="px-3.5 py-1.5 rounded-xl bg-white/10 border border-white/15 text-white hover:bg-white/20 font-semibold cursor-pointer"
               >
                 Delete Current Document
               </button>
@@ -167,7 +167,7 @@ export const PrivacyCenterModal: React.FC<PrivacyCenterModalProps> = ({
                   onDeleteAnalysis();
                   showFeedback('Extracted analysis tree cleared.');
                 }}
-                className="px-3 py-1.5 rounded-lg bg-white border border-red-300 text-red-700 hover:bg-red-50 font-semibold"
+                className="px-3.5 py-1.5 rounded-xl bg-white/10 border border-white/15 text-white hover:bg-white/20 font-semibold cursor-pointer"
               >
                 Delete Analysis Only
               </button>
@@ -177,7 +177,7 @@ export const PrivacyCenterModal: React.FC<PrivacyCenterModalProps> = ({
                   onClearAll();
                   showFeedback('All session data, cache, and history purged.');
                 }}
-                className="px-3 py-1.5 rounded-lg bg-red-600 text-white hover:bg-red-700 font-semibold"
+                className="px-4 py-1.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-semibold shadow-[0_0_15px_rgba(239,68,68,0.4)] cursor-pointer"
               >
                 Purge All Data & Cache
               </button>
@@ -186,13 +186,13 @@ export const PrivacyCenterModal: React.FC<PrivacyCenterModalProps> = ({
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-3 border-t border-slate-200 bg-slate-50 flex items-center justify-between rounded-b-2xl">
-          <span className="text-[11px] text-slate-500">
-            Current Session: Ephemeral · Memory Isolated
+        <div className="px-6 py-3.5 border-t border-white/10 bg-white/[0.02] flex items-center justify-between rounded-b-2xl">
+          <span className="text-[11px] text-[#94A3B8] font-mono">
+            Session: Ephemeral · Memory Isolated
           </span>
           <button
             onClick={onClose}
-            className="px-4 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs"
+            className="px-4 py-1.5 rounded-xl bg-[#5B7CFA] hover:bg-[#5B7CFA]/85 text-white font-semibold text-xs transition-colors cursor-pointer"
           >
             Done
           </button>
