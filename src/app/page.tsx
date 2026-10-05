@@ -203,13 +203,13 @@ export default function Home() {
             {activeView === 'viewer' && (
               <div className="flex-1 flex flex-col h-[calc(100vh-108px)]">
                 {/* Mobile Pane Switcher (Visible only on small screens) */}
-                <div className="md:hidden bg-[#0B1220] p-2 flex items-center justify-center gap-2 border-b border-white/10">
+                <div className="md:hidden bg-[#0F0307] p-2 flex items-center justify-center gap-2 border-b border-red-500/20">
                   <button
                     onClick={() => setMobilePane('document')}
                     className={`flex-1 py-2 text-xs font-semibold rounded-xl transition-all ${
                       mobilePane === 'document'
-                        ? 'bg-[#172554] text-white border border-[#5B7CFA]/40 shadow-xs'
-                        : 'text-[#94A3B8] hover:text-white'
+                        ? 'bg-[#22060F] text-red-200 border border-red-500/50 shadow-xs'
+                        : 'text-[#A1A1AA] hover:text-white'
                     }`}
                   >
                     Original Document (Page {activePage})
@@ -218,8 +218,8 @@ export default function Home() {
                     onClick={() => setMobilePane('analysis')}
                     className={`flex-1 py-2 text-xs font-semibold rounded-xl transition-all ${
                       mobilePane === 'analysis'
-                        ? 'bg-[#172554] text-white border border-[#5B7CFA]/40 shadow-xs'
-                        : 'text-[#94A3B8] hover:text-white'
+                        ? 'bg-[#22060F] text-red-200 border border-red-500/50 shadow-xs'
+                        : 'text-[#A1A1AA] hover:text-white'
                     }`}
                   >
                     Legal Intelligence & Chat

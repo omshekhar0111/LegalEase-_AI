@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { X, BookOpen, ExternalLink, Phone, MapPin, CheckCircle2, Search, Scale, Sparkles } from 'lucide-react';
+import { X, ExternalLink, Phone, MapPin, Search, Scale, Sparkles, Gavel, Landmark } from 'lucide-react';
 import { VERIFIED_LEGAL_AID_RESOURCES } from '@/data/legalAidDirectory';
 
 interface LegalAidModalProps {
@@ -25,17 +25,22 @@ export const LegalAidModal: React.FC<LegalAidModalProps> = ({ isOpen, onClose })
   });
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-fadeIn">
-      <div className="bg-[#0B1220] text-[#F8F6F1] rounded-2xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-white/15">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-fadeIn">
+      <div className="bg-[#0F0307] text-[#FAF7F2] rounded-2xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-red-500/25">
         {/* Header */}
-        <div className="px-6 py-4 border-b border-white/10 flex items-center justify-between bg-white/[0.02] rounded-t-2xl">
+        <div className="px-6 py-4 border-b border-red-500/20 flex items-center justify-between bg-white/[0.02] rounded-t-2xl">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#172554] to-[#0B1220] border border-[#5B7CFA]/40 text-[#5B7CFA] flex items-center justify-center shadow-[0_0_15px_rgba(91,124,250,0.25)]">
-              <Scale className="w-5 h-5 text-[#D4A72C]" />
+            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#991B1B] to-[#E11D48] border-2 border-[#D4AF37]/60 text-[#D4AF37] flex items-center justify-center shadow-[0_0_15px_rgba(225,29,72,0.4)]">
+              <Scale className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-base font-bold text-white">Verified Indian Legal Aid Pathway</h2>
-              <p className="text-xs text-[#94A3B8]">
+              <h2 className="text-base font-bold text-white flex items-center gap-2">
+                <span>Verified Indian Legal Aid Pathway</span>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-red-950 text-red-300 border border-red-800">
+                  Statutory Aid
+                </span>
+              </h2>
+              <p className="text-xs text-[#A1A1AA]">
                 Official constitutional & statutory legal aid resources across India
               </p>
             </div>
@@ -43,22 +48,22 @@ export const LegalAidModal: React.FC<LegalAidModalProps> = ({ isOpen, onClose })
 
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg hover:bg-white/10 text-[#94A3B8] hover:text-white transition-colors cursor-pointer"
+            className="p-1.5 rounded-lg hover:bg-white/10 text-[#A1A1AA] hover:text-white transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Informational Advisory Notice */}
-        <div className="p-4 bg-[#172554]/40 border-b border-[#5B7CFA]/20 text-xs text-[#F8F6F1] flex items-start gap-2.5 backdrop-blur-sm">
-          <Sparkles className="w-4 h-4 text-[#D4A72C] shrink-0 mt-0.5" />
+        <div className="p-4 bg-[#22060F]/80 border-b border-red-500/25 text-xs text-[#FAF7F2] flex items-start gap-2.5 backdrop-blur-sm">
+          <Gavel className="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5" />
           <div>
             <strong className="text-white">Consider checking whether you qualify for free legal aid in India:</strong> Under Section 12 of the Legal Services Authorities Act, 1987, free legal counsel and Lok Adalat dispute resolution are provided by the Government to eligible citizens (including women, industrial workmen, senior citizens, and lower-income families).
           </div>
         </div>
 
         {/* Filter & Search Bar */}
-        <div className="p-4 border-b border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 text-xs">
+        <div className="p-4 border-b border-red-500/20 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 text-xs">
           <div className="flex items-center gap-1.5 overflow-x-auto">
             {['all', 'national', 'state', 'consumer', 'labour'].map((type) => (
               <button
@@ -66,8 +71,8 @@ export const LegalAidModal: React.FC<LegalAidModalProps> = ({ isOpen, onClose })
                 onClick={() => setFilterType(type)}
                 className={`px-3 py-1.5 rounded-xl font-medium capitalize transition-all cursor-pointer ${
                   filterType === type
-                    ? 'bg-white text-slate-900 font-bold'
-                    : 'bg-white/5 text-[#94A3B8] hover:text-white border border-white/10'
+                    ? 'bg-[#E11D48] text-white font-bold shadow-[0_0_10px_rgba(225,29,72,0.4)]'
+                    : 'bg-white/5 text-[#A1A1AA] hover:text-white border border-red-500/20'
                 }`}
               >
                 {type === 'all' ? 'All Authorities' : type}
@@ -76,13 +81,13 @@ export const LegalAidModal: React.FC<LegalAidModalProps> = ({ isOpen, onClose })
           </div>
 
           <div className="relative">
-            <Search className="w-3.5 h-3.5 absolute left-3 top-2.5 text-[#94A3B8]" />
+            <Search className="w-3.5 h-3.5 absolute left-3 top-2.5 text-[#A1A1AA]" />
             <input
               type="text"
               placeholder="Search by state or authority..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-9 pr-3 py-1.5 text-xs rounded-xl border border-white/15 bg-white/5 text-white placeholder:text-[#94A3B8] w-full sm:w-60 focus:outline-none focus:ring-1 focus:ring-[#5B7CFA]"
+              className="pl-9 pr-3 py-1.5 text-xs rounded-xl border border-red-500/30 bg-black/40 text-white placeholder:text-[#A1A1AA] w-full sm:w-60 focus:outline-none focus:ring-1 focus:ring-[#E11D48]"
             />
           </div>
         </div>
@@ -92,7 +97,7 @@ export const LegalAidModal: React.FC<LegalAidModalProps> = ({ isOpen, onClose })
           {filtered.map((res) => (
             <div
               key={res.id}
-              className="p-5 rounded-2xl glass-card-dark border border-white/10 hover:border-white/20 transition-all shadow-md"
+              className="p-5 rounded-2xl glass-card-dark border border-red-500/20 hover:border-red-500/40 transition-all shadow-md"
             >
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2.5">
                 <div>
@@ -102,8 +107,8 @@ export const LegalAidModal: React.FC<LegalAidModalProps> = ({ isOpen, onClose })
                       Verified Official
                     </span>
                   </div>
-                  <div className="text-[11px] text-[#94A3B8] flex items-center gap-1.5 mt-1 font-mono">
-                    <MapPin className="w-3.5 h-3.5 text-[#5B7CFA]" />
+                  <div className="text-[11px] text-[#A1A1AA] flex items-center gap-1.5 mt-1 font-mono">
+                    <MapPin className="w-3.5 h-3.5 text-[#E11D48]" />
                     <span>Jurisdiction: {res.jurisdictionScope}</span>
                   </div>
                 </div>
@@ -112,21 +117,21 @@ export const LegalAidModal: React.FC<LegalAidModalProps> = ({ isOpen, onClose })
                   href={res.officialPortal}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs font-semibold text-[#5B7CFA] hover:text-white flex items-center gap-1.5 shrink-0 self-start sm:self-auto bg-[#172554] border border-[#5B7CFA]/30 px-3 py-1.5 rounded-xl hover:border-[#5B7CFA] transition-all"
+                  className="text-xs font-semibold text-red-300 hover:text-white flex items-center gap-1.5 shrink-0 self-start sm:self-auto bg-[#22060F] border border-red-500/35 px-3 py-1.5 rounded-xl hover:border-red-400 transition-all"
                 >
                   <span>Official Portal</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
+                  <ExternalLink className="w-3.5 h-3.5 text-[#D4AF37]" />
                 </a>
               </div>
 
-              <p className="text-xs text-[#94A3B8] mb-3 leading-relaxed">{res.description}</p>
+              <p className="text-xs text-[#A1A1AA] mb-3 leading-relaxed">{res.description}</p>
 
               {/* Eligibility Criteria */}
-              <div className="mb-3.5 p-3 rounded-xl bg-black/40 border border-white/5">
-                <div className="text-[10px] font-mono font-bold text-[#D4A72C] uppercase tracking-wider mb-1.5">
+              <div className="mb-3.5 p-3 rounded-xl bg-black/40 border border-red-500/15">
+                <div className="text-[10px] font-mono font-bold text-[#D4AF37] uppercase tracking-wider mb-1.5">
                   Key Eligibility Categories:
                 </div>
-                <ul className="text-xs text-[#F8F6F1] space-y-1 list-disc pl-4">
+                <ul className="text-xs text-[#FAF7F2] space-y-1 list-disc pl-4">
                   {res.eligibilityCriteria.map((crit, idx) => (
                     <li key={idx}>{crit}</li>
                   ))}
@@ -134,13 +139,13 @@ export const LegalAidModal: React.FC<LegalAidModalProps> = ({ isOpen, onClose })
               </div>
 
               {/* Helpline & Address */}
-              <div className="flex flex-wrap items-center justify-between gap-2 pt-2.5 border-t border-white/10 text-xs">
+              <div className="flex flex-wrap items-center justify-between gap-2 pt-2.5 border-t border-red-500/15 text-xs">
                 <div className="flex items-center gap-2 font-bold text-white">
-                  <Phone className="w-3.5 h-3.5 text-[#5B7CFA]" />
+                  <Phone className="w-3.5 h-3.5 text-[#E11D48]" />
                   <span>Helpline: {res.helpline}</span>
                 </div>
                 {res.address && (
-                  <span className="text-[11px] text-[#94A3B8] truncate max-w-sm" title={res.address}>
+                  <span className="text-[11px] text-[#A1A1AA] truncate max-w-sm" title={res.address}>
                     {res.address}
                   </span>
                 )}
@@ -150,8 +155,8 @@ export const LegalAidModal: React.FC<LegalAidModalProps> = ({ isOpen, onClose })
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-3.5 border-t border-white/10 bg-white/[0.02] text-[11px] text-[#94A3B8] flex items-center justify-between rounded-b-2xl">
-          <span>Official resources sourced directly from NALSA and Ministry of Law & Justice, Govt. of India.</span>
+        <div className="px-6 py-3.5 border-t border-red-500/20 bg-white/[0.02] text-[11px] text-[#A1A1AA] flex items-center justify-between rounded-b-2xl">
+          <span>Official statutory aid directly under National Legal Services Authorities Act, 1987.</span>
           <button
             onClick={onClose}
             className="px-4 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold transition-colors cursor-pointer"
